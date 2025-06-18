@@ -3,12 +3,10 @@ import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { customSession } from "better-auth/plugins";
 import { magicLink } from "better-auth/plugins/magic-link";
-import { Resend } from "resend";
 import MagicLinkEmail from "../../emails/MagicLink";
 import { prisma } from "./db";
+import { resend } from "./resend";
 import { stripe } from "./stripe";
-
-const resend = new Resend(process.env.RESEND_API_KEY!);
 
 export const auth = betterAuth({
   database: prismaAdapter(prisma, {
