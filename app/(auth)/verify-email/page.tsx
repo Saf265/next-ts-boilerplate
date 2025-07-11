@@ -1,7 +1,8 @@
-import OpenGmailButton from "@/components/Button/OpenGmailButton";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { brandName } from "@/config/config";
 import { AlertCircle, Inbox, Mail } from "lucide-react";
+import Link from "next/link";
 
 export default function VerifyEmail() {
   return (
@@ -20,7 +21,11 @@ export default function VerifyEmail() {
 
         <CardContent className="space-y-6">
           <div className="flex justify-center">
-            <OpenGmailButton />
+            <Button variant="default" asChild>
+              <Link target="_blank" href="https://mail.google.com/">
+                Open Gmail
+              </Link>
+            </Button>
           </div>
 
           <div className="space-y-4">
