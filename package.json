@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:dev": "prisma migrate dev --name auto && prisma generate",
+    "vercel-build": "prisma migrate deploy && next build"
   },
   "dependencies": {
     "@prisma/client": "6.9.0",
@@ -35,6 +37,7 @@
     "resend": "^4.5.2",
     "stripe": "^18.2.1",
     "tailwind-merge": "^3.3.0",
+    "zod": "^3.25.56",
     "zustand": "^5.0.5"
   },
   "devDependencies": {
