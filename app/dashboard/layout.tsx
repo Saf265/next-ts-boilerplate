@@ -1,19 +1,18 @@
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
+import { AppSidebar } from "@/components/Sidebar/AppSidebar";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import React from "react";
 
-export default async function DashboardLayout({
+export default function DashboardLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headersList = await headers();
-  const session = await auth.api.getSession({
-    headers: headersList,
-  });
-
-  if (!session) {
-    return null;
-  }
-  return <>{children}</>;
+  return (
+    <SidebarProvider>
+      <AppSidebar />
+      <SidebarInset>
+        <main className="">{children}</main>
+      </SidebarInset>
+    </SidebarProvider>
+  );
 }

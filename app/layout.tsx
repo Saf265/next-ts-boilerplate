@@ -1,5 +1,6 @@
 import { brandName } from "@/config/config";
 import QueryClientProvider from "@/context/react-query/QueryClientProvider";
+import { ThemeProvider } from "@/context/theme/theme-provider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
@@ -26,7 +27,16 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en">
       <body className={`${inter.className} antialiased`}>
         <NextTopLoader />
-        <QueryClientProvider>{children}</QueryClientProvider>
+        <QueryClientProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </QueryClientProvider>
         <Toaster />
       </body>
     </html>
